@@ -45,10 +45,38 @@ function getLetterText() {
 function addToHistory(date, letter) {
   const historyList = document.getElementById("letter-history");
   const listItem = document.createElement("li");
+  const button = document.createElement("button");
+  button.textContent = "Cancella";
+  button.classList.add("delete-button");
+
   listItem.textContent = `${date}: ${letter}`;
+  listItem.appendChild(button);
   historyList.appendChild(listItem);
 
+  button.addEventListener("click", () => {
+    const itemDate = listItem.textContent.split(":")[0];
+    const itemLetter = listItem.textContent.split(":")[1].trim();
+    deleteFromHistory(itemDate, itemLetter);
+  });
+
   saveHistory();
+}
+
+function deleteFromHistory(date, letter) {
+  const historyList = document.getElementById("letter-history");
+  const historyItems = historyList.children;
+
+  for (let i = 0; i < historyItems.length; i++) {
+    const item = historyItems[i];
+    const itemDate = item.textContent.split(":")[0];
+    const itemLetter = item.textContent.split(":")[1].trim();
+
+    if (itemDate === date && itemLetter === letter) {
+      item.remove();
+      saveHistory();
+      return;
+    }
+  }
 }
 
 function isLetterAlreadyInHistory(date, letter) {

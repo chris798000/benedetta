@@ -31,16 +31,57 @@ header {
   text-align: center;
 }
 
-.date-box {
-  background-color: #ffcc00;
-  padding: 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.letter-container {
+  width: 300px;
+  height: 200px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.date-box:hover {
-  background-color: #ff9900;
+.letter-header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.letter-header h2 {
+  margin: 0;
+}
+
+.open-button,
+.close-button,
+.save-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.open-button {
+  background-color: #4caf50;
+}
+
+.close-button {
+  background-color: #e74c3c;
+}
+
+.save-button {
+  background-color: #03a9f4;
+}
+
+.letter-content {
+  padding: 20px;
+  display: none;
+}
+
+#letter-text {
+  font-size: 18px;
+  font-family: Arial, sans-serif;
 }
 
 .history {

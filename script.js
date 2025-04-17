@@ -3,19 +3,43 @@ const letters = {
   // Aggiungi altre lettere qui con la data corrispondente
 };
 
-function showLetter() {
+const letterContainer = document.querySelector(".letter-container");
+const openButton = document.querySelector(".open-button");
+const closeButton = document.querySelector(".close-button");
+const saveButton = document.querySelector(".save-button");
+const letterContent = document.querySelector(".letter-content");
+const letterText = document.querySelector("#letter-text");
+
+openButton.addEventListener("click", () => {
+  letterContent.style.display = "block";
+  letterText.textContent = getLetterText();
+});
+
+closeButton.addEventListener("click", () => {
+  letterContent.style.display = "none";
+});
+
+saveButton.addEventListener("click", () => {
+  const today = new Date();
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = today.toLocaleDateString("it-IT", options);
+  const letter = letterText.textContent;
+
+  if (!isLetterAlreadyInHistory(formattedDate, letter)) {
+    addToHistory(formattedDate, letter);
+  } else {
+    alert("La lettera è già stata salvata nella storia.");
+  }
+});
+
+function getLetterText() {
   const today = new Date();
   const options = { year: "numeric", month: "long", day: "numeric" };
   const formattedDate = today.toLocaleDateString("it-IT", options);
 
   const letter =
     letters[formattedDate] || "Non hai ancora ricevuto una lettera per oggi.";
-  alert(letter);
-
-  // Aggiungi la lettera alla storia se non è già presente
-  if (!isLetterAlreadyInHistory(formattedDate, letter)) {
-    addToHistory(formattedDate, letter);
-  }
+  return letter;
 }
 
 function addToHistory(date, letter) {
@@ -24,7 +48,6 @@ function addToHistory(date, letter) {
   listItem.textContent = `${date}: ${letter}`;
   historyList.appendChild(listItem);
 
-  // Salva la storia delle lettere in LocalStorage
   saveHistory();
 }
 

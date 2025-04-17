@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regalo per la mia ragazza</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Il nostro amore</h1>
+    </header>
+
+    <section class="gallery">
+      <h2>Galleria di Immagini</h2>
+      <div class="image-container">
+        <img src="image1.jpg" alt="Immagine 1" />
+        <img src="image2.jpg" alt="Immagine 2" />
+        <img src="image3.jpg" alt="Immagine 3" />
+        <!-- Aggiungi altre immagini qui -->
+      </div>
+    </section>
+
+    <section class="file-manager">
+      <h2>Lettere del giorno</h2>
+      <div class="date-box" id="today-box" onclick="showLetter()">
+        Clicca qui per la lettera di oggi
+      </div>
+    </section>
+
+    <section class="history">
+      <h2>Storia delle Lettere</h2>
+      <ul id="letter-history">
+        <!-- Le lettere passate verranno aggiunte qui -->
+      </ul>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
